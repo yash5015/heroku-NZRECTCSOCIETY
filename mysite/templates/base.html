@@ -1,0 +1,122 @@
+{%load static%}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{% static 'style/style.css' %}">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+
+    <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css"
+        integrity="sha384-AYmEC3Yw5cVb3ZcuHtOA93w35dYTsvhLPVnYs9eStHfGJvOvKxVfELGroGkvsg+p" crossorigin="anonymous" />
+    <script src="https://cdn.jsdelivr.net/npm/pdfjs-dist@2.12.313/build/pdf.min.js"></script>
+    <title>NZRECSOCIETY</title>
+</head>
+
+
+<body onload="slider()" style=" background: rgb(249, 226, 227); border: 1px solid red;">
+
+    <div class=" navbannerbg">
+
+        <div class="branding">
+            <div class="branding-logo">
+                <img src="{%static 'assets/newlogo2.png'%}" alt="">
+            </div>
+            <div class="name">
+                <h2>The northern zone railway employees co-operative thrift and credit society ltd. regd office
+                    baroda
+                    house
+                    new delhi. </h2>
+            </div>
+            <div class="reg">
+                <img src="{%static 'assets/reg3.png'%}" alt="">
+            </div>
+
+        </div>
+
+        <nav>
+            <div class="logo" id="logo">
+                <a href="#banner"><img src="" alt=""></a>
+            </div>
+            <div class="menuToggle" onclick="toggleMenu();"></div>
+            <ul class="navigation">
+                <li><a href="/" onclick="toggleMenu();">HOME</a></li>
+                <li><a href="{%url 'about' %}" onclick="toggleMenu();">ABOUT US</a></li>
+                <li><a href="{%url 'members'%}" onclick="toggleMenu();">MEMBERS</a></li>
+                <li><a href=" {%url 'articles'%}" onclick="toggleMenu();">ARTICLES</a></li>
+                <li><a href=" {%url 'loan'%}" onclick="toggleMenu();">LOAN</a></li>
+                <li><a href=" {%url 'contact'%}" onclick="toggleMenu();">CONTACT US</a></li>
+                {%if user.is_authenticated%}
+                <li><a href=" {%url 'adminpanel'%}" onclick="toggleMenu();">ADMIN PANEL</a></li>
+                <li><a href=" {%url 'logout'%}" onclick="toggleMenu();">LOGOUT</a></li>
+                {%endif%}
+            </ul>
+        </nav>
+    </div>
+
+    {%block body%}{%endblock%}
+
+
+    <footer class="footer">
+        <div class="container">
+            <div class="footerdiv">
+                <div class="splash">
+                    <img src="{%static 'assets/splash2.png'%}" alt="">
+                </div>
+                <img src="{%static 'assets/steam_engine2_3.png'%}" alt="">
+                <div class="footercontainer">
+                    <div class="footerrow">
+                        <div class="footerinfo site-map">
+                            <h3>
+                                Site Map
+                            </h3>
+                            <p><a href="/">HOME</a></p>
+                            <p><a href="{%url 'about' %}">ABOUT US</a></p>
+                            <p><a href="{%url 'members' %}">MEMBER</a></p>
+                            <p><a href="{%url 'articles' %}">ARTICLE</a></p>
+                            <p><a href="{%url 'loan' %}">LOAN</a></p>
+                            <p><a href="{%url 'contact' %}">CONTACT US</a></p>
+
+                        </div>
+
+                        <div class="footerinfo">
+                            <h3>
+                                Contact Info
+                            </h3>
+                            <div class="footercontact-info">
+                                <div class="cinfo">
+                                    <i class="fas fa-map-marker-alt"></i>
+                                    <p>NZRE CTC SOCIETY LTD. BARODA HOUSE, NEW-DELHI</p>
+                                </div>
+                                <div class="cinfo">
+                                    <i class="fas fa-phone-alt"></i>
+                                    <p>69582858</p>
+                                </div>
+                                <div class="cinfo">
+                                    <i class="fas fa-fax"></i>
+                                    <p>01123385608</p>
+                                </div>
+                                <div class="cinfo">
+                                    <i class="far fa-envelope"></i>
+                                    <p>nzcectcsociety@gmail.com</p>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+                    <p>&copy; 2020 NZRECTC Society pvt ltd. All Rights Reserved | Design by <span
+                            class="ourcompany">Tyranno Software</span></p>
+                </div>
+
+            </div>
+        </div>
+        </div>
+    </footer>
+    <script src="{%static 'script/script.js'%}"></script>
+</body>
+
+</html>

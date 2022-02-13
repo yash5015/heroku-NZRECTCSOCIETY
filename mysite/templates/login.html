@@ -1,0 +1,36 @@
+{% extends 'base.html' %}
+{%block body%}
+{%load static%}
+
+{% if messages %}
+{% for message in messages %}
+<div class="loan-message" id="loan-message">
+    <strong>{{message}}</strong>
+    <div class="cross" id="cross" onclick="disableMessage()">&#10060;</div>
+</div>
+{% endfor %}
+{% endif %}
+
+<section class="branchfiles">
+    <div class="container">
+        <h1>login</h1>
+        <div class="loginform">
+            <form action="" method="POST" novalidate>
+                {%csrf_token%}
+                {%if form.non_field_errors%}
+                {%for error in form.non_field_errors%}
+                <p>{{error}}</p>
+                {%endfor%}
+                {%endif%}
+                {%for fm in form%}
+                {{fm.label_tag}}{{fm}}{{fm.errors|striptags}}
+                <br><br>
+                {%endfor%}
+                <div class="g-recaptcha" data-sitekey="6LeR-WgeAAAAAPgTuI0q-gGO8-OFGD7F2tndTbPd"></div>
+                <button type="submit">Login</button>
+            </form>
+        </div>
+    </div>
+</section>
+<script src="https://www.google.com/recaptcha/api.js" async defer></script>
+{% endblock body %}
