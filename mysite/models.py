@@ -1,3 +1,4 @@
+from email import message
 from statistics import mode
 from django.db import models
 from django.core import validators
@@ -31,3 +32,7 @@ class Contact(models.Model):
 
     def __str__(self):
         return self.name
+
+class Chairman_message(models.Model):
+    message=models.CharField(max_length=500)
+    

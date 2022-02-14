@@ -19,21 +19,12 @@ function slider() {
     i = 0;
   }
   slideImg.src = images[i];
-  console.log(i);
   i++;
 
   setTimeout("slider()", 5000);
 }
-var message = "Commin Soon";
-function cmMessage() {
-  var cmmessage = document.getElementById("textcmmessage").value;
-  window.localStorage.setItem("message", cmmessage);
-}
-
-document.getElementById("cmtext").innerHTML = localStorage.getItem("message");
 
 function disableMessage() {
-  console.log("hi");
   let ele = document.getElementById("loan-message");
   ele.style.display = "none";
 }

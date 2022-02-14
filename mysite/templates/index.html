@@ -59,17 +59,20 @@
                 <a href="{%url 'about' %}"><button>
                         Read More
                     </button></a>
-                <div class="chairman-message" id="cmmessage">
+                <div class="chairman-message" style="display: none;">
                     <p>Chairman Message:</p>
-
                     <marquee>
-                        <p id="cmtext">Welcome To The Northern Zone Railway Employees Co-Operative Thrift And Credit
-                            Society Ltd</p>
+                        <p id="cmtext">{{cmmsg}}</p>
+                    </marquee>
+                </div>
+                <hr>
+                <div class="chairman-message">
+                    <p>Chairman Message:</p>
+                    <marquee>
+                        <p id="cmtext">{{cmmsg}}</p>
                     </marquee>
                 </div>
             </div>
-
-
         </div>
     </section>
 

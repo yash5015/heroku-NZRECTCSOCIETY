@@ -31,13 +31,13 @@
     <div class="row post-upload">
       <div class="post-chairman">
         <h2>chairman message</h2>
-        <form action="" method="">
+        <form action="{%url 'cmmessage'%}" method="POST">
           {%csrf_token%}
           <div class="cminput">
             <label for="">Enter Chairman message</label>
             <textarea name="message" id="textcmmessage" cols="30" rows="2" placeholder="Enter message"></textarea>
           </div>
-          <button onclick="cmMessage()">Post</button>
+          <button type="submit">Post</button>
         </form>
       </div>
       <div class="upload-members">

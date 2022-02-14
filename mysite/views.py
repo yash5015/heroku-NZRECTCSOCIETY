@@ -1,9 +1,10 @@
+import re
 from urllib import response
 from django.contrib import messages
 from django.shortcuts import render, HttpResponseRedirect, redirect
 from django.template import RequestContext
 
-from .models import Branch, Contact, Loanform
+from .models import Branch, Contact, Loanform, Chairman_message
 from django.core.files.storage import FileSystemStorage
 from django.http import HttpResponse, HttpResponseNotFound
 import json
@@ -16,7 +17,9 @@ from django.contrib.auth import authenticate,login,logout
 
 
 def home(request):
-    return render(request, 'index.html')
+    cmmsg=Chairman_message.objects.order_by('-id')[0]
+    # print(cmmsg.message)
+    return render(request, 'index.html',{"cmmsg":cmmsg.message})
 
 
 def about(request):
@@ -170,7 +173,13 @@ def formstatus(request,id):
         return HttpResponseRedirect("/adminpanel")
     return render(request,"admin.html")
 
-
+def cmmessage(request):
+    if request.method=="POST":
+        message=request.POST['message']
+        Chairman_message(message=message).save()
+        messages.success(request, 'CM message has been posted successfully')
+        return HttpResponseRedirect("/adminpanel")
+    return render(request,'admin.html')
 
 # def signup(request):
 #     if request.method=="POST":
