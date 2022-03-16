@@ -1,10 +1,15 @@
 var slideImg = document.getElementById("slideImg");
 
-var images = new Array("../static/assets/bg1.jpg", "../static/assets/bg2.jpg");
-
+var images = new Array(
+  "../static/assets/bg1.jpg",
+  "../static/assets/baroda_house.jpg",
+  "../static/assets/bg1.jpg",
+  "../static/assets/baroda_house.jpg"
+);
 // var images = new Array(
-//   "{%static'assets/bg1.jpg'%}",
-//   "{%static'assets/bg2.jpg'%}"
+//   "{%static 'assets/bg1.jpg'%}",
+//   "{%static 'assets/baroda_house.jpg'%}",
+//   "{%static 'assets/bg1.jpg'%}"
 // );
 var len = images.length;
 var i = 0;

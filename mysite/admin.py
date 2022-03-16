@@ -9,4 +9,4 @@ admin.site.register(Chairman_message)
 
 @admin.register(Loanform)
 class LoanformAdmin(admin.ModelAdmin):
-    list_display = ('name', 'phno', 'regno', 'userform', 'date','status')
+    list_display = ('name', 'phno', 'regno', 'selbranch','userform', 'date','status')

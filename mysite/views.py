@@ -43,6 +43,7 @@ def loan(request):
         name = request.POST['name']
         phno = request.POST['phno']
         regno = request.POST['regno']
+        selbranch=request.POST['selbranch']
         # userform = request.POST['userform']
         # userform = request.FILES.getlist('userform')
 
@@ -58,7 +59,7 @@ def loan(request):
             files = request.FILES.getlist('userform')
             for file in files:
                 Loanform(name=name, phno=phno,
-                         regno=regno, userform=file).save()
+                         regno=regno, selbranch=selbranch,userform=file).save()
             messages.success(
                 request, "your form have been submitted successfully")
         else:
@@ -115,11 +116,22 @@ def branchfiles(request, branchwise):
     return render(request, 'branchfiles.html', context)
 
 
+
+def loanbranchfiles(request,branchwise):
+    if request.user.is_authenticated:
+        if branchwise:
+            listt=Loanform.objects.filter(selbranch=branchwise)
+            context = {"dictt": listt,"branch":branchwise}
+            return render(request, 'loan_branchwise.html', context)
+
 def deletefile(request, branch, filename):
     if request.method == "POST":
         pi = Branch.objects.get(bfiles=filename)
         pi.delete()
-        return HttpResponseRedirect("/members")
+        # return HttpResponseRedirect("/members")
+        return HttpResponseRedirect(request.META.get('HTTP_REFERER'))
+    else:
+        return HttpResponseRedirect('/login')
 
 
 def adminpanel(request):
@@ -133,7 +145,10 @@ def adminpanel(request):
             return HttpResponseRedirect("/members")
         userforms = Loanform.objects.all().order_by('-id')
         usercontact=Contact.objects.all().order_by('-id')
-        context = {"userforms": userforms,'usercontacts':usercontact}
+
+
+        loan_branch_files = Loanform.objects.values_list('selbranch').distinct()
+        context = {"userforms": userforms,'usercontacts':usercontact,"loan_branch_files": loan_branch_files}
         return render(request, 'admin.html', context)
     else:
         return HttpResponseRedirect('/login')
@@ -143,14 +158,16 @@ def deleteform(request, id):
         pi = Loanform.objects.get(id=id)
         pi.delete()
         # return render(request, "admin.html")
-        return HttpResponseRedirect("/adminpanel")
+        # return HttpResponseRedirect("/adminpanel")
+        return HttpResponseRedirect(request.META.get('HTTP_REFERER'))
     return render(request,"admin.html")
 def deletecontact(request, id):
     if request.method=="POST":
         pi = Contact.objects.get(id=id)
         pi.delete()
         # return render(request, "admin.html")
-        return HttpResponseRedirect("/adminpanel")
+        # return HttpResponseRedirect("/adminpanel")
+        return HttpResponseRedirect(request.META.get('HTTP_REFERER'))
     return render(request,"admin.html")
 
 def formstatus(request,id):
@@ -170,7 +187,8 @@ def formstatus(request,id):
         # Loanform(status=sts).save()
         # print(pi.name," ",pi.status)
         pp.save()
-        return HttpResponseRedirect("/adminpanel")
+        # return HttpResponseRedirect("adminpanel/")
+        return HttpResponseRedirect(request.META.get('HTTP_REFERER'))
     return render(request,"admin.html")
 
 def cmmessage(request):

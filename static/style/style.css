@@ -174,7 +174,7 @@ h3 {
   background: rgb(102, 7, 70);
   border-radius: 13px;
   width: 900px;
-  height: 310px;
+  height: 300px;
   margin-top: 45px;
   padding-left: 65px;
   display: flex;
@@ -463,7 +463,6 @@ tr:nth-child(even) {
   justify-content: center;
   flex-direction: column;
   margin: 30px;
-  width: 120px;
 }
 .loan-card img {
   position: relative;
@@ -701,10 +700,6 @@ input[type="text"] {
   border: 2px solid #7070ea;
   border-radius: 5px;
   margin: 10px 0;
-}
-select {
-  height: 36px;
-  font-size: 20px;
 }
 .cminput {
   display: flex;
@@ -1077,7 +1072,6 @@ input[type="password"] {
   .footercontainer {
     width: 100%;
     padding: 10px 0 0px 8px;
-    height: 310px;
   }
   .footerdiv img {
     left: 0;
