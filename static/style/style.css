@@ -174,7 +174,7 @@ h3 {
   background: rgb(102, 7, 70);
   border-radius: 13px;
   width: 900px;
-  height: 300px;
+  height: 310px;
   margin-top: 45px;
   padding-left: 65px;
   display: flex;
@@ -463,6 +463,7 @@ tr:nth-child(even) {
   justify-content: center;
   flex-direction: column;
   margin: 30px;
+  width: 125px;
 }
 .loan-card img {
   position: relative;
@@ -700,6 +701,10 @@ input[type="text"] {
   border: 2px solid #7070ea;
   border-radius: 5px;
   margin: 10px 0;
+}
+select {
+  height: 36px;
+  font-size: 20px;
 }
 .cminput {
   display: flex;
