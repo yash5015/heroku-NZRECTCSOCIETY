@@ -29,7 +29,7 @@ SECRET_KEY = 'django-insecure-v4g2%$xi*f_$n&%fwx!b6^md-x*mjiyg+7%z)dl1yp-p6d5hd2
 DEBUG = False
 
 ALLOWED_HOSTS = ["nzrectcsociety.herokuapp.com",
-                 "localhost", "127.0.0.1"]
+                 "localhost", "127.0.0.1",'.now.sh']
 
 
 # Application definition
@@ -72,7 +72,8 @@ TEMPLATES = [
     },
 ]
 
-WSGI_APPLICATION = 'myproject.wsgi.application'
+# WSGI_APPLICATION = 'myproject.wsgi.application'
+WSGI_APPLICATION = 'vercel_app.wsgi.app'
 
 
 # Database
